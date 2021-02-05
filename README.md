@@ -9,3 +9,8 @@ Python binding or extention demos for libary written in c++
 ### notes
 
 none
+### sources
+
+- [tutorial](https://docs.python.org/3/extending/extending.html) in which `Python.h` is employed.
+
+- [tutorial](https://docs.python.org/3/extending/extending.html) in which `boost.python.hpp` is employed.
