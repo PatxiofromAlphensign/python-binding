@@ -1,3 +1,9 @@
 build
 a.out
 new/a.out
+modd.so
+py.o
+build
+make
+py.cpp
+setup.py
