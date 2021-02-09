@@ -2,7 +2,8 @@ language: python
 python: 
     - "3.8"
 install:
+    - sudo apt upgrade && sudo apt update
     - sudo apt install python3-dev, libboost-python1.67-dev
 
 script:
-    - bash make struct.cpp
+    - bash make struct

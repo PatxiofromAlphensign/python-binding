@@ -27,6 +27,11 @@ class f {
             this->valarr;
             return valarr.max();
         }
+    PyObject* script(PyObject* command) {
+        const char* cmd = (char*)command;
+        int sts = system(cmd);
+        return PyLong_FromLong(sts);
+}
 };
 
 struct F {
@@ -38,6 +43,9 @@ struct F {
         
     }
     int x() {return a.X;}
+    PyObject* script(PyObject* command) {
+        return a.script(command);
+    }
 
 };
 
@@ -48,6 +56,7 @@ void apply(PyObject *callable, F& x ) {
     boost::python::call<void>(callable, boost::ref(x));
 }
 
+
 dict func1(int count) {
 dict b;
 fm a;
@@ -56,7 +65,6 @@ b[std::__cxx11::to_string(i)] = i;
 }
 return b;
 }
-
 
 int wrap(std::string k, int i) {
     dict b = func1(i);
@@ -73,6 +81,7 @@ BOOST_PYTHON_MODULE(modd) {
     def("func1", func1);
     def("wrap", wrap); 
     class_<F>("F")
+        .def("script", &F::script)
         .def("max", &F::max)
     ;
 }
