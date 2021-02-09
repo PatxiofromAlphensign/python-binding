@@ -1,6 +1,8 @@
 Python binding or extention demos for libary written in c++
 ----
 
+![travis](https://travis-ci.org/PatxiofromAlphensign/python-binding.svg?branch=master)
+
 ### focus
 
 - make c++ work using either `boost.python` or `Python.h`. :o:
