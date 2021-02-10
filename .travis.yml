@@ -2,7 +2,7 @@ language: python
 python: 
     - "3.8"
 before_install:
-    - sudo apt upgrade && sudo apt update
+    - sudo apt upgrade --fix-missing && sudo apt update 
 install:
     - sudo apt install python3-dev, libboost-python1.67-dev
 script:
