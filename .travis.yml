@@ -8,6 +8,7 @@ git:
 env:
     - name=struct.cpp
     - fullname=*.cpp
+    - job="update
     global:
         - name=struct.cpp
         - name=*.cpp
@@ -17,5 +18,5 @@ before_install:
 install:
     - apt install python3-dev, libboost-python1.67-dev
 script:
-    - echo $name
+    - echo using $name
     - if [ -e $name ];then exit; else bash make $name;fi
