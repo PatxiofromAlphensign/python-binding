@@ -6,12 +6,16 @@ git:
     submodule: True
 
 env:
-    global: 
+    - name=struct.cpp
+    - fullname=*.cpp
+    global:
         - name=struct.cpp
+        - name=*.cpp
 
 before_install:
-    - sudo apt update 
+    - apt update 
 install:
-    - sudo apt install python3-dev, libboost-python1.67-dev
+    - apt install python3-dev, libboost-python1.67-dev
 script:
-    - bash make $name
+    - $name
+    - if [ -e $name ];then exit; else bash make $name;fi
