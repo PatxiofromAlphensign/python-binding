@@ -6,12 +6,14 @@ git:
     submodule: True
 
 env:
-    - if [-e $(ls *.cpp) ];then name=struct;else name=;fi
+    - name=struct.cpp
+    - mname=*.cpp
 
 before_install:
     - set -x 
-    - sudo apt upgrade --fix-missing && sudo apt update  --fix-missing
+    - sudo apt update  --fix-missing
 install:
     - sudo apt install python3-dev, libboost-python1.67-dev
+    - g++ --version
 script:
     - bash make $name
