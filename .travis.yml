@@ -13,7 +13,7 @@ env:
         - name=*.cpp
 
 before_install:
-    - apt update 
+    - if [ $job=="update" ];then apt update; fi
 install:
     - apt install python3-dev, libboost-python1.67-dev
 script:
