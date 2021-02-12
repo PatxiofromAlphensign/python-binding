@@ -17,5 +17,5 @@ before_install:
 install:
     - apt install python3-dev, libboost-python1.67-dev
 script:
-    - $name
+    - echo $name
     - if [ -e $name ];then exit; else bash make $name;fi
