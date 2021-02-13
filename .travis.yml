@@ -5,7 +5,7 @@ env:
     global:
         - name=python3-dev
 install:
-    - pip3 install $name
+    - apt update
 script:
     -  mkdir $name && cd name && cp ../*.cpp .
 stages:
