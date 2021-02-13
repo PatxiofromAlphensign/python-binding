@@ -1,29 +1,15 @@
-language: minimal
-git:
-    depth: 2
-    submodule: True
-
+language: python
+python:
+    "3.8"
 env:
-    - name=struct.cpp
-    - fullname=*.cpp
     - job="update
     global:
         - name=struct.cpp
+        - name=
         - name=*.cpp
 
-before_install:
-    - if [ $job=="update" ];then apt update; fi
 install:
+    - echo $name
     - apt install python3-dev, libboost-python1.67-dev
-script:
-    - echo using $name
-    - if [ -e $name ];then exit; else bash make $name;fi
       
-jobs:
-    include:
-        - stage: test
-          name: "test"
-          language: python
-          python:
-              "3.8"
 
