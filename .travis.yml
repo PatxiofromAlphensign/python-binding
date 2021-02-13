@@ -4,8 +4,15 @@ python:
 env:
     global:
         - name=python3-dev
-        - name=python-dev
 install:
-    - echo $name
-      
+    - pip3 install $name
+script:
+    - | mkdir $name \
+        cd name \
+        cp ../*.cpp .
+
+jobs:
+    include:
+        - stage: test
+          name: "test"
 
