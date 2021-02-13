@@ -7,12 +7,6 @@ env:
 install:
     - pip3 install $name
 script:
-    - | mkdir $name \
-        cd name \
-        cp ../*.cpp .
+    -  mkdir $name && cd name && cp ../*.cpp .
 
-jobs:
-    include:
-        - stage: test
-          name: "test"
 
