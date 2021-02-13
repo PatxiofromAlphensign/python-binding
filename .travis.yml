@@ -1,6 +1,10 @@
 language: python
 python:
     "3.8"
+env:
+    global:
+        - name=python3-dev
+        - name=python-dev
 install:
     - echo $name
       
