@@ -1,15 +1,7 @@
 language: python
 python:
     "3.8"
-env:
-    - job="update
-    global:
-        - name=struct.cpp
-        - name=
-        - name=*.cpp
-
 install:
     - echo $name
-    - apt install python3-dev, libboost-python1.67-dev
       
 
