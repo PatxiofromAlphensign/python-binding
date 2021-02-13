@@ -10,7 +10,7 @@ script:
     -  mkdir $name && cd $name && cp ../*.cpp .
 stages:
     - test
-    - test1
+    - main
 jobs:
     include:
         - stage: test
@@ -21,12 +21,17 @@ jobs:
           install: sudo apt list
 
           script: echo this is test
-        - stage: test1
-          name: "test"
+
+        - stage: main
+          name: "main"
           language: python
           python:
               - "3.8"
-          scipt: echo this is test1
+          install:
+              - pip3 show $name
+              - if [ $? -eq 0 ]; then sudo apt install $name;fi
+
+          scipt: bash make struct.cpp
 
 
 
