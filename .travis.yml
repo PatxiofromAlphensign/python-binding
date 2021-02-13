@@ -21,6 +21,13 @@ jobs:
           install: sudo apt list
 
           script: echo this is test
+        - stage: test1
+          name: "test"
+          language: python
+          python:
+              - "3.8"
+          scipt: echo this is test1
 
+          s
 
 
