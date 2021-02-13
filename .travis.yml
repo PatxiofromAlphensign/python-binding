@@ -28,6 +28,5 @@ jobs:
               - "3.8"
           scipt: echo this is test1
 
-          s
 
 
