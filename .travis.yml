@@ -1,6 +1,4 @@
-language: python
-python: 
-    - "3.8"
+language: minimal
 git:
     depth: 2
     submodule: True
@@ -20,3 +18,12 @@ install:
 script:
     - echo using $name
     - if [ -e $name ];then exit; else bash make $name;fi
+      
+jobs:
+    include:
+        - stage: test
+          name: "test"
+          language: python
+          python:
+              "3.8"
+
