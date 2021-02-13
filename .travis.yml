@@ -8,5 +8,13 @@ install:
     - pip3 install $name
 script:
     -  mkdir $name && cd name && cp ../*.cpp .
+stages:
+    - test
+    - test1
+jobs:
+    include:
+        - stage: test
+          name: "test"
+
 
 
