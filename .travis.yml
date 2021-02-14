@@ -3,7 +3,7 @@ python:
     "3.8"
 env:
     global:
-        - name="python3-dev libboost-python-dev afafa"
+        - name="python3-dev libboost-python-dev"
         - continue=1
 
 before_install:
@@ -12,10 +12,8 @@ before_install:
     - sudo apt upgrade  
 install:
     - apt show $name 2> /dev/null
-    - echo $?
-    - echo $continue
-    - if [ $? -eq 0 ]; then sudo apt install $name; fi
+    - if [ $? -lt 2 ]; then sudo apt install $name; fi
 
 script:
-    - echo none
+    - bash make struct
 
