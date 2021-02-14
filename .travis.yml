@@ -15,7 +15,7 @@ install:
 before_install:
     - if [ $job=="update" ];then apt update; fi
 
-before_install:
+install:
     - sudo apt dist-upgrade 
     - sudo apt upgrade && sudo apt update
 
