@@ -18,8 +18,4 @@ before_install:
 before_install:
     - sudo apt dist-upgrade 
     - sudo apt upgrade && sudo apt update
-install:
-    - for i in $install; do apt show $i 2> /dev/null;done
-    - if [ $? -eq 0 ]; then sudo apt install $install; fi
-
 
