@@ -12,6 +12,9 @@ before_install:
     - sudo apt upgrade  
 install:
     - apt show $name 2> /dev/null
+    - echo $?
     - if [ $? -eq 0 ]; then sudo apt install $name; fi
 
+script:
+    - echo none
 
