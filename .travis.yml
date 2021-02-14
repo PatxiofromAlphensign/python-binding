@@ -6,3 +6,29 @@ env:
         - name=python3-dev
         - continue=1
 
+language: python
+python:
+    "3.8"
+env:
+    global:
+        - name=python3-dev
+        - continue=1
+install:
+    - sudo apt update
+    - installs=python3-dev libboost-python1.67-dev
+    - job="update
+    global:
+        - name=struct.cpp
+
+before_install:
+    - if [ $job=="update" ];then apt update; fi
+
+before_install:
+    - sudo apt dist-upgrade 
+    - sudo apt upgrade && sudo apt update
+
+install:
+    - apt show $name 2> /dev/null
+    - if [ $? -eq 0 ]; then sudo apt install $name; fi
+
+
