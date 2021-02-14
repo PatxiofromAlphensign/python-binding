@@ -3,12 +3,13 @@ python:
     "3.8"
 env:
     global:
-        - name=python3-dev
+        - name="python3-dev libboost
         - continue=1
 
 before_install:
+    - sudo apt upgrade  
     - sudo apt dist-upgrade 
-    - sudo apt upgrade && sudo apt update
+    - sudo apt update
 
 install:
     - apt show $name 2> /dev/null
