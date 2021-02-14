@@ -31,7 +31,7 @@ jobs:
           install:
               - if [ $continue -eq 0 ]; then sudo apt install $name;fi
 
-          scipt: bash make struct.cpp
+          scipt: bash make struct
 
 
 
