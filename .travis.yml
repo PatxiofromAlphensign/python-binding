@@ -7,31 +7,19 @@ env:
         - continue=1
 install:
     - sudo apt update
-script:
-    -  mkdir $name && cd $name && cp ../*.cpp .
-stages:
-    - test
-    - main
-jobs:
-    include:
-        - stage: test
-          name: "test"
-          language: python
-          python:
-              - "3.8"
-          install: sudo apt list
+    - installs=python3-dev libboost-python1.67-dev
+    - job="update
+    global:
+        - name=struct.cpp
 
-          script: echo this is test
+before_install:
+    - if [ $job=="update" ];then apt update; fi
 
-        - stage: main
-          name: "main"
-          language: python
-          python:
-              - "3.8"
-          install:
-              - if [ $continue -eq 0 ]; then sudo apt install $name;fi
-
-          scipt: bash make struct
-
+before_install:
+    - sudo apt dist-upgrade 
+    - sudo apt upgrade && sudo apt update
+install:
+    - for i in $install; do apt show $i 2> /dev/null;done
+    - if [ $? -eq 0 ]; then sudo apt install $install; fi
 
 
