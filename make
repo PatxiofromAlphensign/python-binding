@@ -20,8 +20,15 @@ clr() {
     for f in *.so *.o; do rm $f;done
 }
 
+get_numfileS() {
+    echo $(vars $1) | wc -w
+}
+
 if [ "$1" == "clear" ]; then
     clr
+    exit
+elif [ "$2" == "n" ]; then
+    echo $(get_numfileS $1)
     exit
 fi
 
