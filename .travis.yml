@@ -4,6 +4,7 @@ python:
 env:
     global:
         - name=python3-dev
+        - continue=1
 install:
     - sudo apt update
 script:
@@ -28,8 +29,7 @@ jobs:
           python:
               - "3.8"
           install:
-              - pip3 show $name
-              - if [ $? -eq 0 ]; then sudo apt install $name;fi
+              - if [ $continue -eq 0 ]; then sudo apt install $name;fi
 
           scipt: bash make struct.cpp
 
