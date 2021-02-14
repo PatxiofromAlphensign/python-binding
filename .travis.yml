@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 language: minimal
 git:
     depth: 2
@@ -20,12 +21,12 @@ install:
     - for i in $install; do apt show $i 2> /dev/null;done
     - if [ $? -eq 0 ]; then sudo apt install $install; fi
 
-jobs:
-    - stage: test
-        language: python
-        python: "3.8"
-        script:
-            - echo using $name
-            - if [ -e $name ];then exit; else bash make $name;fi
-
+      #jobs:
+      #    - stage: test
+      #        language: python
+      #        python: "3.8"
+      #        script:
+      #            - echo using $name
+      #            - if [ -e $name ];then exit; else bash make $name;fi
+      #
 
