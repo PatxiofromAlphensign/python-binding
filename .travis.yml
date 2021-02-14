@@ -6,17 +6,20 @@ git:
     submodule: True
 
 env:
-    - name=struct.cpp
-    - fullname=*.cpp
+    - installs=python3-dev libboost-python1.67-dev
     - job="update
     global:
         - name=struct.cpp
-        - name=*.cpp
 
 before_install:
     - if [ $job=="update" ];then apt update; fi
+
+before_install:
+    - sudo apt dist-upgrade 
+    - sudo apt upgrade && sudo apt update
 install:
-    - apt install python3-dev, libboost-python1.67-dev
+    - for i in $install; do apt show $i 2> /dev/null;done
+    - if [ $? -eq 0 ]; then sudo apt install $install; fi
 script:
     - echo using $name
     - if [ -e $name ];then exit; else bash make $name;fi
