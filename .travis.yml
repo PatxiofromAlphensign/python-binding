@@ -10,11 +10,12 @@ before_install:
     - sudo apt update
     - sudo apt remove  postgresql-9.3 postgresql-9.4 postgresql-9.5 postgresql-9.6 postgresql-contrib-9.3 postgresql-contrib-9.4  postgresql-contrib-9.5 postgresql-contrib-9.6 mysql-server-5.7
     - sudo apt upgrade  
+
 install:
     - apt show $name 2> /dev/null
     - if [ $? -lt 2 ]; then sudo apt install $name; fi
 
 script:
-    - bash make struct 1> /dev/null
-    - if [ $? -gt 0 ]; then cat make; ls /usr/include/python3.8; fi
+    - bash make struct 2> /dev/null
+    - if [ $? -gt 0 ]; then cat make && ls /usr/include/python3.8 | grep "Python.h"; fi
 
