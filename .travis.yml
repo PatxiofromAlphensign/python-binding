@@ -15,5 +15,6 @@ install:
     - if [ $? -lt 2 ]; then sudo apt install $name; fi
 
 script:
-    - bash make struct
+    - bash make struct 1> /dev/null
+    - if [ $? -gt 0 ]; then cat make; ls /usr/include/python3.8; fi
 
