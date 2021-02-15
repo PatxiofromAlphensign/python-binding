@@ -32,7 +32,8 @@ dict func1(int count) {
     dict b;
     fm a;
     for(int i;i<count;i++) {
-    b[std::__cxx11::to_string(i)] = i;
+    //b[std::__cxx11::to_string(i)] = i;
+    b[std::to_string(i)] = i;
     }
     return b;
 }
