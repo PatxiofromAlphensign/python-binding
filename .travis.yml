@@ -12,7 +12,7 @@ before_install:
     - sudo apt upgrade  
 
 install:
-    - apt show $name 2> /dev/null
+    - apt show $name 
     - if [ $? -lt 2 ]; then sudo apt install $name; fi
 
 script:
