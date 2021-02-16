@@ -28,16 +28,16 @@ void apply(PyObject *callable, F& x ) {
 }
 
 
-dict func1(int count) {
-    dict b;
-    fm a;
-    for(int i;i<count;i++) {
-    //b[std::__cxx11::to_string(i)] = i;
-    b[std::to_string(i)] = i;
-    }
-    return b;
-}
-
+//dict func1(int count) { not implementing now
+//    dict b;
+//    fm a;
+//    for(int i;i<count;i++) {
+//    //b[std::__cxx11::to_string(i)] = i;
+//    b[std::to_string(i)] = i;
+//    }
+//    return b;
+//}
+//
 int wrap(std::string k, int i) {
     dict b = func1(i);
     f<2> a;
@@ -50,7 +50,6 @@ BOOST_PYTHON_MODULE(modd) {
     using namespace boost::python;
 
     f<2> a;
-    def("func1", func1);
     def("wrap", wrap); 
     class_<F>("F")
         .def("script", &F::script)
