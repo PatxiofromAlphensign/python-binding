@@ -3,17 +3,18 @@ python:
     "3.8"
 env:
     global:
-        - name="python3-dev libboost"
+        - name="python3-dev libboost-python-dev"
         - continue=1
 
 before_install:
     - sudo apt update
-    - sudo apt remove  postgresql-9.3 postgresql-9.4 postgresql-9.5 postgresql-9.6 postgresql-contrib-9.3 postgresql-contrib-9.4  postgresql-contrib-9.5 postgresql-contrib-9.6
+    - sudo apt remove  postgresql-9.3 postgresql-9.4 postgresql-9.5 postgresql-9.6 postgresql-contrib-9.3 postgresql-contrib-9.4  postgresql-contrib-9.5 postgresql-contrib-9.6 mysql-server-5.7
     - sudo apt upgrade  
-    - sudo apt dist-upgrade 
 
 install:
-    - apt show $name 2> /dev/null
-    - if [ $? -eq 0 ]; then sudo apt install $name; fi
+    - apt show $name 
+    - if [ $? -lt 2 ]; then sudo apt install $name; fi
 
-
+script:
+    - bash make struct 
+    - if [ $? -gt 0 ]; then cat make && ls /usr/include/ | grep python; fi
