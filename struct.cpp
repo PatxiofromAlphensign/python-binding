@@ -38,18 +38,11 @@ void apply(PyObject *callable, F& x ) {
 //    return b;
 //}
 //
-int wrap(std::string k, int i) {
-    f<2> a;
-    a.param(3);
-    return b[k];
-}
-
 
 BOOST_PYTHON_MODULE(modd) {
     using namespace boost::python;
 
     f<2> a;
-    def("wrap", wrap); 
     class_<F>("F")
         .def("script", &F::script)
         .def("max", &F::max)
