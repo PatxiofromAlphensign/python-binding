@@ -39,7 +39,6 @@ void apply(PyObject *callable, F& x ) {
 //}
 //
 int wrap(std::string k, int i) {
-    dict b = func1(i);
     f<2> a;
     a.param(3);
     return b[k];
