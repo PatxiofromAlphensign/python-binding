@@ -5,6 +5,7 @@
 #include <main.h>
 #include <boost/python.hpp>
 
+// sturct that wraps the main `f` class 
 struct F {
     int k = 0;
     f<2> a;
@@ -19,7 +20,6 @@ struct F {
     }
 
 };
-
 typedef std::slice fm;
 typedef std::map<std::string, int> dict;
 
@@ -27,6 +27,9 @@ void apply(PyObject *callable, F& x ) {
     boost::python::call<void>(callable, boost::ref(x));
 }
 
+// =============================
+// rest is just python api building
+// =============================
 
 //dict func1(int count) { not implementing now
 //    dict b;
