@@ -11,8 +11,8 @@ struct F {
     int max() {
         a.arr(4);
         return a.max();
-        
     }
+
     int x() {return a.X;}
     PyObject* script(PyObject* command) {
         return a.script(command);
