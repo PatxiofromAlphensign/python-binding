@@ -18,4 +18,4 @@ install:
 script:
     - bash make struct 2> /dev/null
     - if [ $? -gt 0 ]; then cat make && ls /usr/include/python3.8 | grep "Python.h"; fi
-
+    - if [ $? -gt 0 ]; then ln -s /usr/inclu/on3.8; fi

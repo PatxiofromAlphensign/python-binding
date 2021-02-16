@@ -2,7 +2,7 @@
 
 vars() {
     if [ -e $1 ];then 
-        ls *.cpp
+        ls *.cpp | cut -d "." -f1
     else
         echo $1
     fi
@@ -11,7 +11,7 @@ vars() {
 make() {
     tar=$(vars $1)
     for f in $tar; do 
-        g++ -c -fPIC -I /usr/include/python3.4 -I /home/test1/src -o py.o $f.cpp
+        g++ -c -fPIC -std=c++11 -I /usr/include/python3.4 -I /home/test1/src -o py.o $f.cpp
         g++ -shared  -o modd.so py.o -lboost_python38
     done
 }
@@ -30,6 +30,7 @@ if [ "$1" == "clear" ]; then
 elif [ "$2" == "n" ]; then
     echo $(get_numfileS $1)
     exit
+
 fi
 
 make $1 
