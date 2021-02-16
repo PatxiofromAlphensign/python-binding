@@ -12,7 +12,7 @@ make() {
     tar=$(vars $1)
     for f in $tar; do 
         g++ -c -fPIC -std=c++11 -I /usr/include/python3.8 -I src -o py.o $f.cpp
-        g++ -shared  -o modd.so py.o -lboost_python
+        g++ -shared  -o modd.so py.o -lboost_python38
     done
 }
 
