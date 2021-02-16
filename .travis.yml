@@ -16,5 +16,5 @@ install:
     - if [ $? -lt 2 ]; then sudo apt install $name; fi
 
 script:
-    - bash make struct 2> /dev/null
+    - bash make struct 
     - if [ $? -gt 0 ]; then cat make && ls /usr/include/ | grep python; fi
