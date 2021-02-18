@@ -11,13 +11,18 @@ vars() {
 make() {
     tar=$(vars $1)
     for f in $tar; do 
-        g++ -c -fPIC -std=c++11 -I /usr/include/python3.8 -I src -o py.o $f.cpp
+        g++ -c -fPIC -std=c++11 -I /usr/include/$(ls /usr/include | grep python3) -I src -o py.o $f.cpp
         g++ -shared  -o modd.so py.o -lboost_python38
     done
+    rm $(ls *.o)
 }
 
 clr() {
-    for f in *.so *.o; do rm $f;done
+    rm $(ls *.so 2> /dev/null) 2> /dev/null || echo E: lib is not built yet
+}
+
+get_numfileS() {
+    echo $(vars $1) | wc -w
 }
 
 get_numfileS() {
