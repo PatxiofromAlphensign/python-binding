@@ -20,10 +20,12 @@ Easily to do computations and ops using the exposed python api. All the differen
     - main classes should be put into `src/`.
 
 ### TODO 
-    - type equivance with python and c++
-    - type conversion between c++ and python
-    - extend the lib to defining numeric computations
-    - implement different text and image algorithms
+    - type equivance with python and c++ :x:
+    - type conversion between c++ and python :o:
+    - extend the lib to defining numeric computationsw :o:
+    - implement different text and image algorithms :x:
+    - write python api in seperate file, use only python.h :x:
+    - seperate lib for ops
 
 ### sources
 
