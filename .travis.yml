@@ -27,12 +27,4 @@ jobs:
         script:
             - bash withoutBoost/make withoutBoost/py 
 
-    - stage: test_alt
-      name: "alt"
-      language: python
-      python: "3.8"
-       script:
-            - bash withoutBoost/make withoutBoost/py 
-
-
 
