@@ -5,6 +5,7 @@ env:
     global:
         - name="python3-dev libboost-python-dev"
         - continue=1
+        - make=0
 
 before_install:
     - sudo apt update
@@ -12,9 +13,11 @@ before_install:
     - sudo apt upgrade  
 
 install:
-    - apt show $name 
     - if [ $? -lt 2 ]; then sudo apt install $name; fi
 
 script:
-    - bash make struct 
+    - if [ $make -eq 1];then  bash make struct;fi
+    - if [ $make -eq 0];then g++ -I /usr/include/python3.5 -I src;fi
+
     - if [ $? -gt 0 ]; then cat make && ls /usr/include/ | grep python; fi
+    - if [ $? -gt 0 ]; then  && ls /usr/include/ | grep python; fi
