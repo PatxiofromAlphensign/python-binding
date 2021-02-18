@@ -18,6 +18,6 @@ install:
 script:
     - if [ $make -eq 1];then  bash make struct;fi
     - if [ $make -eq 0];then g++ -I /usr/include/python3.5 -I src;fi
-
+    - python3 setup.py install
     - if [ $? -gt 0 ]; then cat make && ls /usr/include/ | grep python; fi
     - if [ $? -gt 0 ]; then  && ls /usr/include/ | grep python; fi

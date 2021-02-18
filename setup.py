@@ -5,7 +5,7 @@ import os
 class build_config:
     def ctypes_obj(self):
         flist = os.listdir(os.path.abspath(os.curdir))
-        self.sofile =[f for f in flist if f.endswith("so")][0]
+        self.sofile =[f for f in flist if f.endswith("cpp")][0]
         #return cdll.Loadlibrary(s.path.abspath(sofile))
     def get_discription(self):
         with open("README.md", "r") as r:
