@@ -70,6 +70,11 @@ class f {
 
         return vec;
     }
+
+    void setitem(PyObject *Dict, int k, int val) {
+        PyObject *kobj = PyLong_FromLong(k), *valobj = PyLong_FromLong(val);
+        PyDict_SetItem(Dict, kobj, valobj);
+    }
 };
 
         

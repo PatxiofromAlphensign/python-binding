@@ -3,7 +3,7 @@
 #include <map>
 #include <cstring>
 #include <string>
-#include <main.h>
+#include <pythonStructs.h>
 #include <iostream>
 #include <vector>
 #include <boost/python.hpp>
@@ -28,7 +28,7 @@ struct F {
 
     PyObject *convert_to_pyobject(boost::python::list k, boost::python::list l ) { // later should enclose key and value into PyObject
         PyObject *n = PyDict_New();
-        return n;
+        return n; // TODO implement some assignment with k and l
     }
 
     PyObject * dicts(int i) {
@@ -38,12 +38,13 @@ struct F {
         boost::python::dict d;
         PyObject* KV = convert_to_pyobject(d.keys(), d.values());
         std::vector<int> vec = a.iterate(KV,KV);
+
+        a.setitem(KV, 2, 1);
     }
     
 };
 typedef std::slice fm;
 typedef std::map<std::string, int> dict;
-
 void unwarpvec(std::vector<int> vec) {
     for (auto i:vec) {
         std::cout << i;
@@ -52,9 +53,9 @@ void unwarpvec(std::vector<int> vec) {
 void apply(PyObject *callable, F& x ) {
     boost::python::call<void>(callable, boost::ref(x));
 }
+
 BOOST_PYTHON_MODULE(modd) {
     using namespace boost::python;
-
     f<2> a;
     class_<F>("F")
         .def("script", &F::script)
@@ -64,9 +65,5 @@ BOOST_PYTHON_MODULE(modd) {
 }
 
 int main() {
-    PyObject *k, *v;
-    f<2> a;
-    std::vector<int> vec = a.iterate(k,v);
-    unwarpvec(vec);
-    return 0;}
+return 0;}
 
