@@ -1,13 +1,12 @@
-<<<<<<< HEAD
 language: minimal
 git:
     depth: 2
     submodule: True
 env:
-    - installs=python3-dev libboost-python1.67-dev
-    - job="update
+    - installs=python3-dev
+    - job="update"
     global:
-        - name=struct.cpp
+        - name=py
 
 stages:
     - test
@@ -15,18 +14,25 @@ before_install:
     - if [ $job=="update" ];then apt update; fi
 
 before_install:
-    - sudo apt dist-upgrade 
-    - sudo apt upgrade && sudo apt update
+    - sudo apt upgrade 
 install:
-    - for i in $install; do apt show $i 2> /dev/null;done
+    - apt show $installs 2> /dev/null
     - if [ $? -eq 0 ]; then sudo apt install $install; fi
 
-      #jobs:
-      #    - stage: test
-      #        language: python
-      #        python: "3.8"
-      #        script:
-      #            - echo using $name
-      #            - if [ -e $name ];then exit; else bash make $name;fi
-      #
+jobs:
+    - stage: test
+        name:"test"
+        language: python
+        python: "3.4"
+        script:
+            - bash withoutBoost/make withoutBoost/py 
+
+    - stage: test_alt
+      name: "alt"
+      language: python
+      python: "3.8"
+       script:
+            - bash withoutBoost/make withoutBoost/py 
+
+
 
