@@ -2,7 +2,7 @@ from distutils.core import setup, Extension
 
 example_module = Extension(
     'py',
-    sources=['py.cpp'],
+    sources=['python-binding/withoutBoost/py.cpp'],
     language='C++', )
 
 setup(
