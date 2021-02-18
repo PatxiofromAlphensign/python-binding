@@ -1,13 +1,37 @@
+
+#include <Python.h>
 #include <iostream>
 
-class Foo{
-    public:
-        void bar(){
-            std::cout << "Hello" << std::endl;
-        }
+PyObject *getstuff(PyObject *self, PyObject *range) {
+    int rng;
+    if (!PyArg_ParseTuple(range, "i", &rng)) return NULL;
+    int X[] = {};
+    for (int i; i<rng; i++)  {
+        X[i] = i;
+    }
+    return PyLong_FromLong(X[rng - 2]);
+
+} 
+
+static PyMethodDef SpamMethods[] = {
+    {"getstuff",  getstuff, METH_VARARGS,
+     "test."},
+   {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 
-extern "C" {
-    Foo* Foo_new(){ return new Foo(); }
-    void fbar(Foo *foo) {foo->bar();}
-} 
+
+static struct PyModuleDef spammodule = {
+    PyModuleDef_HEAD_INIT,
+    "spam",   /* name of module */
+    NULL, /* module documentation, may be NULL */
+    -1,       /* size of per-interpreter state of the module,
+                 or -1 if the module keeps state in global variables. */
+    SpamMethods
+};
+
+PyMODINIT_FUNC PyInit_modd(void)
+{
+    return PyModule_Create(&spammodule);
+}
+
+
