@@ -74,17 +74,20 @@ int wrap(std::string k, int i) {
 }
 
 
-BOOST_PYTHON_MODULE(modd) {
-    using namespace boost::python;
+//BOOST_PYTHON_MODULE(modd) {
+//    using namespace boost::python;
+//
+//    f<2> a;
+//    def("func1", func1);
+//    def("wrap", wrap); 
+//    class_<F>("F")
+//        .def("script", &F::script)
+//        .def("max", &F::max)
+//    ;
+//}
+//
 
-    f<2> a;
-    def("func1", func1);
-    def("wrap", wrap); 
-    class_<F>("F")
-        .def("script", &F::script)
-        .def("max", &F::max)
-    ;
-}
+
 
 int main() {return 0;}
 
