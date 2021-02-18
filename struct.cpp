@@ -1,6 +1,7 @@
 #include <cstddef>
 #include <valarray>
 #include <map>
+#include <cstring>
 #include <string>
 #include <main.h>
 #include <boost/python.hpp>
@@ -12,12 +13,22 @@ struct F {
         a.arr(4);
         return a.max();
     }
-
     int x() {return a.X;}
-    PyObject* script(PyObject* command) {
+        PyObject* script(PyObject* command) {
         return a.script(command);
     }
 
+    PyObject *str(PyObject *in) { 
+        return a.string(in); //getting seg faults
+    }
+
+    int compute(int i) {}
+
+    f<2>::dict dicts(int i) {
+        int fi = compute(i);
+        PyObject * l  = PyLong_FromLong(fi);
+        return a.mdict(fi);
+    }
 };
 
 typedef std::slice fm;
@@ -28,17 +39,6 @@ void apply(PyObject *callable, F& x ) {
 }
 
 
-//dict func1(int count) { not implementing now
-//    dict b;
-//    fm a;
-//    for(int i;i<count;i++) {
-//    //b[std::__cxx11::to_string(i)] = i;
-//    b[std::to_string(i)] = i;
-//    }
-//    return b;
-//}
-//
-
 BOOST_PYTHON_MODULE(modd) {
     using namespace boost::python;
 
@@ -46,6 +46,7 @@ BOOST_PYTHON_MODULE(modd) {
     class_<F>("F")
         .def("script", &F::script)
         .def("max", &F::max)
+        .def("string", &F::str)
     ;
 }
 
