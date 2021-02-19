@@ -21,4 +21,6 @@ install:
 script:
     - echo stage start
     - bash withoutBoost/make withoutBoost/py 
+    - if [ $? -gt 0 ]; then ls /usr/include | grep python3; echo /usr/include/$(ls /usr/include | grep python3);fi
+
 
