@@ -1,4 +1,5 @@
-language: minimal
+language: python
+python: "3.4"
 git:
     depth: 2
     submodule: True
@@ -7,8 +8,7 @@ stages:
 env:
     - installs=python3-dev
     - job="update"
-    global:
-        - name=py
+    - name=py
 
 before_install:
     - if [ $job=="update" ];then apt update; fi
