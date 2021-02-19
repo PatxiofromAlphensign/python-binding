@@ -18,13 +18,13 @@ install:
     - if [ $? -eq 0 ]; then sudo apt install $install; fi
 script:
     - echo stage start
-      #jobs:
-      #    include:
-      #        - stage: test
-      #            name: "test"
-      #            language: python
-      #            python: "3.4"
-      #            script:
-      #                - bash withoutBoost/make withoutBoost/py 
-      #
+jobs:
+    include:
+        - stage: test
+            name: "test"
+            language: python
+            python: "3.4"
+            script:
+                - bash withoutBoost/make withoutBoost/py 
+
 
