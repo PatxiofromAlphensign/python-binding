@@ -6,9 +6,10 @@ git:
 stages:
     - test
 env:
-    - installs=python3-dev
-    - job="update"
-    - name=py
+    global:
+        - installs=python3-dev
+        - job="update"
+        - name=py
 
 before_install:
     - if [ $job=="update" ];then apt update; fi
@@ -18,13 +19,19 @@ install:
     - if [ $? -eq 0 ]; then sudo apt install $install; fi
 script:
     - echo stage start
-jobs:
-    include:
-        - stage: test
-            name: "test"
-            language: python
-            python: "3.4"
-            script:
-                - bash withoutBoost/make withoutBoost/py 
 
+jobs:
+  include:
+    - stage: test
+      name: 'test'
+      env:
+      cache: pip
+      language: python
+      python: '3.4' # Oldest supported version according to doc/dependencies.md
+      install:
+        - echo none
+      before_script:
+        - echo noen
+      script:
+        - bash withoutBoost/make withoutBoost/py 
 
