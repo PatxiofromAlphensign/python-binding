@@ -13,6 +13,7 @@ env:
 
 before_install:
     - if [ $job=="update" ];then sudo apt update; fi
+    - sudo apt remove mysql-server-5.7
     - sudo apt upgrade 
 install:
     - apt show $installs 2> /dev/null
