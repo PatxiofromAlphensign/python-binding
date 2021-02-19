@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+# me
 
 vars() {
     if [ -e $1 ];then 
