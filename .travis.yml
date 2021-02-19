@@ -2,8 +2,6 @@ language: minimal
 git:
     depth: 2
     submodule: True
-script:
-    - echo 1
 env:
     - installs=python3-dev
     - job="update"
@@ -23,10 +21,10 @@ script:
 jobs:
     include:
         - stage: test
-        name: "test"
-        language: python
-        python: "3.4"
-        script:
-            - bash withoutBoost/make withoutBoost/py 
+            name: "test"
+            language: python
+            python: "3.4"
+            script:
+                - bash withoutBoost/make withoutBoost/py 
 
 
