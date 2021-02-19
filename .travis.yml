@@ -20,18 +20,5 @@ install:
     - if [ $? -eq 0 ]; then sudo apt install $install; fi
 script:
     - echo stage start
-jobs:
-  include:
-    - stage: test
-      name: 'test'
-      env:
-      cache: pip
-      language: python
-      python: '3.4' # Oldest supported version according to doc/dependencies.md
-      install:
-        - echo none
-      before_script:
-        - echo noen
-      script:
-        - bash withoutBoost/make withoutBoost/py 
+    - bash withoutBoost/make withoutBoost/py 
 
