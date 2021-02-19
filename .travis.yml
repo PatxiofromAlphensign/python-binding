@@ -6,6 +6,8 @@ git:
 stages:
     - test
 env:
+    - python=py
+    - python=pyt
     global:
         - installs=python3-dev
         - job="update"
@@ -19,8 +21,7 @@ install:
     - apt show $installs 2> /dev/null
     - if [ $? -eq 0 ]; then sudo apt install $install; fi
 script:
-    - echo stage start
-    - bash withoutBoost/make withoutBoost/py 
+    - bash withoutBoost/make withoutBoost/$python
+    - if [ $? -gt 0 ]; then g++ -c -fPIC -I /usr/include/python3.5m -o py.o withoutBoost/$python.cpp && g++ -shared -o modd.so py.o -lpython3.5m;fi
     - if [ $? -gt 0 ]; then ls /usr/include | grep python3; echo /usr/include/$(ls /usr/include | grep python3);fi
-
 
