@@ -6,12 +6,12 @@ git:
 stages:
     - test
 env:
-    - python=py
-    - python=pyt
     global:
         - installs=python3-dev
         - job="update"
         - name=py
+    - python=py
+    - python=pyt
 
 before_install:
     - if [ $job=="update" ];then sudo apt update; fi
