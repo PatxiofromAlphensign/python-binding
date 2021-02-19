@@ -23,7 +23,8 @@ script:
     - echo stage start
 
 jobs:
-    - stage: test
+    include:
+        - stage: test
         name: "test"
         language: python
         python: "3.4"
