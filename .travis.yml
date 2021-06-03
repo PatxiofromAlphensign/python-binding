@@ -2,50 +2,18 @@ language: python
 python: "3.4"
 git:
     depth: 2
-    submodule: True
-
-stages:
-    - one
-    - two
-
 env:
     global:
-        - installs=python3-dev
+        - installs=python3-dev 
         - job="update"
         - name=py
         - python=py
-
 before_install:
     - if [ $job=="update" ];then sudo apt update; fi
     - sudo apt remove mysql-server-5.7
     - sudo apt upgrade 
 install:
-    - apt show $installs 2> /dev/null
-    - if [ $? -eq 0 ]; then sudo apt install $install; fi
-
-jobs:
-    include:
-        - stage: one
-          name: "one"
-          env:
-          cache: pip
-          language: python
-          python: "3.5"
-          install:
-                - echo none
-          script:
-                - bash withoutBoost/make withoutBoost/$python
-
-    include:
-        - stage: two
-          name: "two"
-          env:
-          cache: pip
-          language: python
-          python: "3.5"
-          install:
-                - echo none
-          script:
-            - if [ $? -gt 0 ]; then g++ -c -fPIC -I /usr/include/python3.5m -o py.o withoutBoost/$python.cpp && g++ -shared -o modd.so py.o -lpython3.5m;fi
-              #- if [ $? -gt 0 ]; then ls /usr/include | grep python3; echo /usr/include/$(ls /usr/include | grep python3);fi
+    - apt show $installs 2> /dev/null || sudo apt install $install; fi
+script:
+    -  make
 

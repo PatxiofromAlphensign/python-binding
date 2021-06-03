@@ -37,14 +37,9 @@ static struct PyModuleDef example_definition = {
     example_methods
 };
 
-PyMODINIT_FUNC PyInit_example(void) {
+PyMODINIT_FUNC PyInit_modd(void) {
   Py_Initialize();
   PyObject *m = PyModule_Create(&example_definition);
   return m;
-}
-
-
-int main() {
-   return 0;
 }
 

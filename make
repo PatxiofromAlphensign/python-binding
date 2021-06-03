@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+
+# USE MAKEFILES, DAMN IT 
 vars() {
     if [ -e $1 ];then 
         ls *.cpp
