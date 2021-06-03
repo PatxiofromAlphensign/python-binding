@@ -13,5 +13,7 @@ before_install:
 install:
     - apt show $installs 2> /dev/null || sudo apt install $install
 script:
+    - find /usr/include -name Python.h
     -  make
+
 
