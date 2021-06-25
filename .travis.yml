@@ -13,6 +13,6 @@ before_install:
 install:
     - apt show $installs 2> /dev/null || sudo apt install $install
 script:
-    -  make
+    -  make # build
 
 
