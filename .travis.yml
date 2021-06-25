@@ -13,12 +13,8 @@ before_install:
 install:
     - apt show $name 
     - if [ $? -lt 2 ]; then sudo apt install $name; fi
-        - installs=python3-dev 
-        - job="update"
-        - name=py
-        - python=py
 before_install:
-    - if [ $job=="update" ];then sudo apt update; fi
+    - [ $job == "update" ] &&  sudo apt update
     - sudo apt remove mysql-server-5.7
     - sudo apt upgrade 
 install:
