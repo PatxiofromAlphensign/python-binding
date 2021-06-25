@@ -38,6 +38,7 @@ static struct PyModuleDef example_definition = {
     example_methods
 };
 
+<<<<<<< HEAD
 struct pythonobj {
     int t;
     pythonobj(int x) {
@@ -77,11 +78,13 @@ PyObject *  checkAndMake() {
 
 
 PyObject *create(PyModuleDef &e) {
+=======
+PyMODINIT_FUNC PyInit_modd(void) {
+>>>>>>> 6a3b8ee4dff0e9b7cc2bb12ac2381043a48dea2a
   Py_Initialize();
   PyObject *m = PyModule_Create(&e);
   return m;
 }
-
 
 int main() {
     create(example_definition);

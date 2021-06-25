@@ -1,12 +1,12 @@
 from distutils.core import setup, Extension
 
 example_module = Extension(
-    'example',
-    sources=['py.cpp'],
+    'py',
+    sources=['python-binding/withoutBoost/py.cpp'],
     language='C++', )
 
 setup(
-    name='example',
+    name='py',
     version='0.1.0',
     description='example module written in C++',
     ext_modules=[example_module], )

@@ -1,10 +1,9 @@
 #!/usr/bin/bash
+# me
 
-
-# USE MAKEFILES, DAMN IT 
 vars() {
     if [ -e $1 ];then 
-        ls *.cpp | cut -d "." -f1
+        ls *.cpp
     else
         echo $1
     fi
@@ -13,14 +12,13 @@ vars() {
 make() {
     tar=$(vars $1)
     for f in $tar; do 
-        g++ -c -fPIC -std=c++11 -I /usr/include/$(ls /usr/include | grep python3) -I src -o py.o $f.cpp
-        g++ -shared  -o modd.so py.o -lboost_python38
+        g++ -c -fPIC -I /usr/include/python3.8 -o py.o $f.cpp
+        g++ -shared  -o modd.so py.o -lpython3.8
     done
-    rm $(ls *.o)
 }
 
 clr() {
-    rm $(ls *.so 2> /dev/null) 2> /dev/null || echo E: lib is not built yet
+    for f in *.so *.o; do rm $f;done
 }
 
 get_numfileS() {
@@ -33,7 +31,6 @@ if [ "$1" == "clear" ]; then
 elif [ "$2" == "n" ]; then
     echo $(get_numfileS $1)
     exit
-
 fi
 
 make $1 

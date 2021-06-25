@@ -1,6 +1,5 @@
 language: python
-python:
-    "3.8"
+python: "3.8"
 env:
     global:
         - name="python3-dev libboost-python-dev"
@@ -14,7 +13,18 @@ before_install:
 install:
     - apt show $name 
     - if [ $? -lt 2 ]; then sudo apt install $name; fi
-
+        - installs=python3-dev 
+        - job="update"
+        - name=py
+        - python=py
+before_install:
+    - if [ $job=="update" ];then sudo apt update; fi
+    - sudo apt remove mysql-server-5.7
+    - sudo apt upgrade 
+install:
+    - apt show $installs 2> /dev/null || sudo apt install $install
+script:
+    -  make
 script:
     - bash make struct 
     - if [ $? -gt 0 ]; then cat make && ls /usr/include/ | grep python; fi
