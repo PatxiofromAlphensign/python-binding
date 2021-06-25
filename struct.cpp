@@ -56,7 +56,6 @@ void apply(PyObject *callable, F& x ) {
     boost::python::call<void>(callable, boost::ref(x));
 }
 
-
 dict func1(int count) {
 dict b;
 fm a;
