@@ -1,7 +1,7 @@
 Python binding or extention demos for libary written in c++
 ----
 
-![travis](https://travis-ci.org/PatxiofromAlphensign/python-binding.svg?branch=master)
+![travis](https://www.travis-ci.com/PatxiofromAlphensign/python-binding.svg?branch=master)
 
 ### focus
 
