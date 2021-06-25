@@ -1,6 +1,5 @@
 #include <cstddef>
-#include <valarray>
-#include <map>
+#include <valarray> #include <map>
 #include <cstring>
 #include <string>
 #include <main.h>
