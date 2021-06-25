@@ -37,6 +37,21 @@ void apply(PyObject *callable, F& x ) {
     boost::python::call<void>(callable, boost::ref(x));
 }
 
+dict func1(int count) {
+dict b;
+fm a;
+for(int i;i<count;i++) {
+b[std::__cxx11::to_string(i)] = i;
+}
+return b;
+}
+
+int wrap(std::string k, int i) {
+    dict b = func1(i);
+    f<2> a;
+    a.param(3);
+    return b[k];
+}
 
 BOOST_PYTHON_MODULE(modd) {
     using namespace boost::python;
