@@ -76,14 +76,14 @@ PyObject *  checkAndMake() {
 }
 
 
-PyMODINIT_FUNC PyInit_modd(void) {
+PyObject *create(PyModuleDef *e) {
   Py_Initialize();
-  PyObject *m = PyModule_Create(&e);
+  PyObject *m = PyModule_Create(e);
   return m;
 }
 
 int main() {
-    create(example_definition);
+    create(&example_definition);
     return 0;
 }
 
