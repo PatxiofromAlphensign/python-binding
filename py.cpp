@@ -38,7 +38,6 @@ static struct PyModuleDef example_definition = {
     example_methods
 };
 
-<<<<<<< HEAD
 struct pythonobj {
     int t;
     pythonobj(int x) {
