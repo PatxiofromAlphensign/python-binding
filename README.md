@@ -15,4 +15,4 @@ none
 
 - [tutorial](https://docs.python.org/3/extending/extending.html) in which `Python.h` is employed.
 
-- [tutorial](https://docs.python.org/3/extending/extending.html) in which `boost.python.hpp` is employed.
+- [tutorial](https://www.boost.org/doc/libs/1_70_0/libs/python/doc/html/tutorial/index.html) in which `boost.python.hpp` is employed.

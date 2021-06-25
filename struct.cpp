@@ -1,38 +1,10 @@
 #include <cstddef>
 #include <valarray>
 #include <map>
+#include <cstring>
 #include <string>
+#include <main.h>
 #include <boost/python.hpp>
- 
-template<int T>
-class f {
-    private:
-        int x;
-        std::valarray<int> valarr;
-    public:
-        f() {
-        this->x = T;
-        }
-        int X;
-        void param(int i) {
-            X = T + this->x + i;
-
-        }
-        std::valarray<int> arr (int i) {
-            f::param(i);
-            std::valarray<int> val(f::X);
-            this->valarr =  val;
-    }
-        int max() {
-            this->valarr;
-            return valarr.max();
-        }
-    PyObject* script(PyObject* command) {
-        const char* cmd = (char*)command;
-        int sts = system(cmd);
-        return PyLong_FromLong(sts);
-}
-};
 
 struct F {
     int k = 0;
@@ -40,13 +12,23 @@ struct F {
     int max() {
         a.arr(4);
         return a.max();
-        
     }
     int x() {return a.X;}
-    PyObject* script(PyObject* command) {
+        PyObject* script(PyObject* command) {
         return a.script(command);
     }
 
+    PyObject *str(PyObject *in) { 
+        return a.string(in); //getting seg faults
+    }
+
+    int compute(int i) {}
+
+    f<2>::dict dicts(int i) {
+        int fi = compute(i);
+        PyObject * l  = PyLong_FromLong(fi);
+        return a.mdict(fi);
+    }
 };
 
 typedef std::slice fm;
@@ -57,6 +39,7 @@ void apply(PyObject *callable, F& x ) {
 }
 
 
+<<<<<<< HEAD
 dict func1(int count) {
 dict b;
 fm a;
@@ -88,6 +71,16 @@ int wrap(std::string k, int i) {
 //
 
 
+BOOST_PYTHON_MODULE(modd) {
+    using namespace boost::python;
+
+    f<2> a;
+    class_<F>("F")
+        .def("script", &F::script)
+        .def("max", &F::max)
+        .def("string", &F::str)
+    ;
+}
 
 int main() {return 0;}
 

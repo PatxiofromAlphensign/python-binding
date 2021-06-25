@@ -1,4 +1,3 @@
-
 #include <Python.h>
 #include <iostream>
 
@@ -13,11 +12,19 @@ PyObject *getstuff(PyObject *self, PyObject *range) {
 
 } 
 
+PyObject *noargs() {
+    int xint;
+    return PyLong_FromLong(xint);
+}
+
 static PyMethodDef SpamMethods[] = {
     {"getstuff",  getstuff, METH_VARARGS,
      "test."},
+    {"noargs",  (PyCFunction)noargs, METH_NOARGS, "without param."},
+
    {NULL, NULL, 0, NULL}        /* Sentinel */
 };
+
 
 
 static struct PyModuleDef spammodule = {
