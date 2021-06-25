@@ -12,8 +12,8 @@ vars() {
 make() {
     tar=$(vars $1)
     for f in $tar; do 
-        g++ -c -fPIC -I /usr/include/python3.5m -o py.o $f.cpp
-        g++ -shared  -o modd.so py.o -lpython3.5m
+        g++ -c -fPIC -I /usr/include/python3.8 -o py.o $f.cpp
+        g++ -shared  -o modd.so py.o -lpython3.8
     done
 }
 
